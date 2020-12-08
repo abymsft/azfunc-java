@@ -23,7 +23,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/target/*.jar'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/target/'
     Contents: '*.jar'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
