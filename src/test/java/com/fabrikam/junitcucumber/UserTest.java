@@ -6,7 +6,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-  features = {"classpath:user.feature"},
+  features = {"src/test/java/com/fabrikam/junitcucumber/user.feature"},
    plugin = {"pretty", "json:target/reports/json/calculator.json"}
 )
 public class UserTest {
