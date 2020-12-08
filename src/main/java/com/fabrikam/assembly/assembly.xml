@@ -11,8 +11,8 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<directory>src/com/fabrikam/</directory>
-			<outputDirectory>fabrikam-output</outputDirectory>
+			<directory>${project.build.directory}/azure-functions/${functionAppName}</directory>
+			<outputDirectory>./</outputDirectory>
 		</fileSet>
 	</fileSets>
 </assembly>

@@ -19,15 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/azure-functions/'
-    includeRootFolder: false
-    archiveFile: "fabrikam-functionapp-$(Build.BuildId).zip"
-    archiveType: 'zip'
-    replaceExistingArchive: true
+    goals: 'assembly:assembly'
 
 - task: CopyFiles@2
   inputs:
@@ -36,6 +28,7 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     OverWrite: true
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
@@ -51,7 +44,7 @@ steps:
     #deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
     #slotName: 'staging'
-    package: 'fabrikam-functionapp-$(Build.BuildId).zip'
+    package: '$(Build.ArtifactStagingDirectory)/*.zip'
 
 #- task: AzureFunctionApp@1
 #  inputs:
