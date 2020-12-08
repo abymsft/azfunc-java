@@ -41,7 +41,8 @@ steps:
     azureSubscription: 'myfinance-azfunc'
     appType: 'functionAppLinux'
     appName: 'myfinexample-asp'
-    #deployToSlotOrASE: true
+    deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
-    #slotName: 'staging'
+    slotName: 'staging'
     package: '$(Build.ArtifactStagingDirectory)/*.zip'
+
