@@ -21,28 +21,26 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/azure-functions'
+    includeRootFolder: false
+    archiveFile: "azfunc-$(Build.BuildId).zip"
+    archiveType: 'zip'
+    replaceExistingArchive: true
+
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/target/azure-functions'
-    Contents: '**'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/'
+    Contents: '*.zip'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     OverWrite: true
-    
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/fabrikam.zip'
-    replaceExistingArchive: true
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
     publishLocation: 'Container'
     ArtifactName: 'drop'
-
 
 
 - task: AzureFunctionApp@1
@@ -53,4 +51,11 @@ steps:
     #deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
     #slotName: 'staging'
-    package: '$(Build.ArtifactStagingDirectory)/fabrikam.zip'
+    package: '$(Build.ArtifactStagingDirectory)/azfunc-$(Build.BuildId).zip'
+
+#- task: AzureFunctionApp@1
+#  inputs:
+#    azureSubscription: 'azfuncmyfinance'
+#    appType: 'functionAppLinux'
+#    appName: 'func-myfinance'
+#    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
