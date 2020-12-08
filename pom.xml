@@ -165,7 +165,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<descriptors>
-						<descriptor>src/com/crunchify/assembly/crunchify.xml</descriptor>
+						<descriptor>src/com/fabrikam/assembly/assembly.xml</descriptor>
 					</descriptors>
 					<tarLongFileMode>posix</tarLongFileMode>
 				</configuration>
