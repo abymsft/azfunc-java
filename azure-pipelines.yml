@@ -21,12 +21,28 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/jf-1.0.jar'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/jf-1.0.zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+    publishLocation: 'Container'
+    ArtifactName: 'drop'
+
+
+
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'azfuncmyfinance'
     appType: 'functionAppLinux'
     appName: 'func-myfinance'
-    deployToSlotOrASE: true
+    #deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
-    slotName: 'staging'
-    package: '$(System.DefaultWorkingDirectory)/**/*.jar'
+    #slotName: 'staging'
+    package: '$(Build.ArtifactStagingDirectory)/jf-1.0.zip'
