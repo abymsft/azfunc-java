@@ -40,7 +40,7 @@ steps:
   inputs:
     azureSubscription: 'azfuncmyfinance'
     appType: 'functionAppLinux'
-    appName: 'func-myfinance'
+    appName: 'myfinexample'
     #deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
     #slotName: 'staging'
