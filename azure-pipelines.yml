@@ -51,7 +51,7 @@ steps:
     #deployToSlotOrASE: true
     resourceGroupName: 'myfinance-hack'
     #slotName: 'staging'
-    package: '$(Build.ArtifactStagingDirectory)/azfunc-$(Build.BuildId).zip'
+    package: 'fabrikam-functionapp-$(Build.BuildId).zip'
 
 #- task: AzureFunctionApp@1
 #  inputs:
