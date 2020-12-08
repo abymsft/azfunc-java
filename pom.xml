@@ -14,8 +14,10 @@
         <java.version>11</java.version>
         <azure.functions.maven.plugin.version>1.9.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>1.4.0</azure.functions.java.library.version>
-        <functionAppName>fabrikam-functionapp</functionAppName>
+        <functionAppName>func-myfinance</functionAppName>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
+        <cucumber.version>6.9.0</cucumber.version>
+		<junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencies>
@@ -39,6 +41,31 @@
             <version>2.23.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java8</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
