@@ -23,9 +23,9 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/azure-functions/**/**'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/azure-functions/'
     includeRootFolder: false
-    archiveFile: "azfunc-$(Build.BuildId).zip"
+    archiveFile: "fabrikam-functionapp-$(Build.BuildId).zip"
     archiveType: 'zip'
     replaceExistingArchive: true
 
